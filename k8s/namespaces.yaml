@@ -1,0 +1,50 @@
+apiVersion: v1
+items:
+- apiVersion: v1
+  kind: Namespace
+  metadata:
+    labels:
+      kubernetes.io/metadata.name: myworkout
+    name: myworkout
+  spec:
+    finalizers:
+    - kubernetes
+  status:
+    phase: Active
+- apiVersion: v1
+  kind: Namespace
+  metadata:
+    labels:
+      kubernetes.io/metadata.name: postgres
+    name: postgres
+  spec:
+    finalizers:
+    - kubernetes
+  status:
+    phase: Active
+- apiVersion: v1
+  kind: Namespace
+  metadata:
+    labels:
+      kubernetes.io/metadata.name: prometheus
+    name: prometheus
+  spec:
+    finalizers:
+    - kubernetes
+  status:
+    phase: Active
+- apiVersion: v1
+  kind: Namespace
+  metadata:
+    labels:
+      kubernetes.io/metadata.name: grafana
+    name: grafana
+  spec:
+    finalizers:
+    - kubernetes
+  status:
+    phase: Active
+kind: List
+metadata:
+  resourceVersion: ""
+  selfLink: ""

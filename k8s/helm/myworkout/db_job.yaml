@@ -1,0 +1,28 @@
+{{- $releaseRevision := now | unixEpoch -}}
+{{- $fullName := include "myworkout.fullname" . -}}
+{{- $jobName := print $fullName "-db-job" "-" $releaseRevision -}}
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ $jobName }}
+  labels:
+    {{- include "myworkout.labels" . | nindent 4 }}
+  annotations:
+    "helm.sh/hook": post-install
+    "helm.sh/hook-weight": "-5"
+    "helm.sh/hook-delete-policy": hook-succeeded
+spec:
+  template:
+    spec:
+      containers:
+      - name: post-install-db-job
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+        command: ["bundle","exec","rake","db:create","db:migrate","db:seed"]
+        #bundle exec rake assets:precompile
+        {{- if .Values.secret }}
+        envFrom:
+        - secretRef:
+            name: {{ .Values.secret.name }}
+        {{- end }}
+      restartPolicy: Never
+  backoffLimit: 4
