@@ -141,6 +141,14 @@ Run the following on the app pod
 bundle exec rake db:create db:migrate db:seed
 ```
 
+Alternatively, the `db_job.yaml` file could be copied to the templates/ directory to automatically run the `db:create db:migrate db:seed` tasks on every `myworkout` helm chart deploy.
+This yaml contains a K8s job that runs after the deploy is complete thanks to these helm annotations:
+```
+    "helm.sh/hook": post-install
+    "helm.sh/hook-weight": "-5"
+    "helm.sh/hook-delete-policy": hook-succeeded
+```
+
 Verify the app is showing the UI and the data retrieved from the postgres DB properly:
 ```
 kubectl get pod -n myworkout
