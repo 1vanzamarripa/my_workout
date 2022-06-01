@@ -1,5 +1,5 @@
 # My_Workout Infrastructure
-This repository is designed to contain all of my-workout's infrastructure, such as terraform resources, helm charts, secret creation, and more.
+This repository is designed to contain all of my_workout's infrastructure, such as terraform resources, helm charts, secret creation, and more.
 
 It also contains the helm chart to deploy the my_workout app.
 
