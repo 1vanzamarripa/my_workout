@@ -90,6 +90,7 @@ This app needs a K8s secret to be created and it should contain the following se
 Create a K8s secret.yaml file with the following format (remember to substitute the `REDACTED` values with the appropriate base64 values):
 ```
 cd k8s/helm/myworkout
+touch secret.yaml
 ```
 ```
 apiVersion: v1
