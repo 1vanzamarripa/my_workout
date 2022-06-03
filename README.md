@@ -71,6 +71,7 @@ This will create the following namespaces:
 The `postgres` helm chart is located under its own directory. It has been configured to use GCP's `standard` `StorageClass`
 - Chart version is `11.0.7`
 - Default postgres docker image tag is `bitnami/postgresql:14.1.0-debian-10-r80`
+
 To deploy postgres, run the following commands:
 ```
 cd k8s/helm/postgres
@@ -86,6 +87,7 @@ Run that command and take note of the password, it will be used later.
 The `myworkout` helm chart is located under its own directory.
 - Chart version is `0.1.0`
 - Default myworkout docker image tag is `fitbodinc/my_workout:0.1.0`
+
 This app needs a K8s secret to be created and it should contain the following secrets that are later imported as environment variables by the `templates/deployment.yaml` template.
 Create a K8s secret.yaml file with the following format (remember to substitute the `REDACTED` values with the appropriate base64 values):
 ```
