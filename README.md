@@ -160,6 +160,35 @@ kubectl -n myworkout port-forward <POD_NAME> 8080:3000
 # open your browser at http://127.0.0.1:8080 and click on the FITBOD logo
 # or go to http://127.0.0.1:8080/home and click around
 ```
+### Obtain admin user credentials
+To get a shell inside the running pod, run
+```
+kubectl get pod -n myworkout
+# take note of the pod name
+kubectl exec -it -n myworkout <POD_NAME> bash
+```
+
+To view credentials, run:
+```
+bundle exec rails credentials:edit
+```
+
+Admin user is `admin@example.com`
+
+### Precompile the CSS assets
+Originally, you won't be able to access any pages in the my_workout site due to missing CSS files.
+
+To get a shell inside the running pod, run
+```
+kubectl get pod -n myworkout
+# take note of the pod name
+kubectl exec -it -n myworkout <POD_NAME> bash
+```
+To precompile assets, run:
+```
+bundle exec rails assets:precompile
+bundle exec rails restart
+```
 
 ### Setup Grafana for infrastructure metrics exposed via Prometheus.
 
