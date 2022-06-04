@@ -131,7 +131,7 @@ To deploy myworkout, run the following commands:
 cd k8s/helm/myworkout
 helm install myworkout -n myworkout .
 ```
-### Create, Migrate, and seed the postgres database
+#### Create, Migrate, and seed the postgres database
 To get a shell inside the running pod, run
 ```
 kubectl get pod -n myworkout
@@ -160,7 +160,7 @@ kubectl -n myworkout port-forward <POD_NAME> 8080:3000
 # open your browser at http://127.0.0.1:8080 and click on the FITBOD logo
 # or go to http://127.0.0.1:8080/home and click around
 ```
-### Obtain admin user credentials
+#### Obtain admin user credentials
 To get a shell inside the running pod, run
 ```
 kubectl get pod -n myworkout
@@ -175,7 +175,7 @@ bundle exec rails credentials:edit
 
 Admin user is `admin@example.com`
 
-### Precompile the CSS assets
+#### Precompile the CSS assets
 Originally, you won't be able to access any pages in the my_workout site due to missing CSS files.
 
 To get a shell inside the running pod, run
